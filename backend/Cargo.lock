@@ -91,15 +91,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "backend"
-version = "0.1.0"
-dependencies = [
- "axum",
- "sqlx",
- "tokio",
-]
-
-[[package]]
 name = "base64"
 version = "0.22.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -347,6 +338,15 @@ checksum = "5a23add41df1562121a9393cb065eab5146a1242410f23a644851e90cfd669d2"
 dependencies = [
  "parking",
  "pin-project-lite",
+]
+
+[[package]]
+name = "file-manager-backend"
+version = "0.1.0"
+dependencies = [
+ "axum",
+ "sqlx",
+ "tokio",
 ]
 
 [[package]]
