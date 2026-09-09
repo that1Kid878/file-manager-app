@@ -3,7 +3,7 @@ use serde::{Deserialize, Serialize};
 use sqlx::FromRow;
 
 #[derive(Serialize, Deserialize, Clone, FromRow)]
-pub struct FileDbModel {
+pub struct File {
     id: i64,
     name: String,
     parent_id: i64,
