@@ -3,7 +3,7 @@ use std::sync::Arc;
 
 use axum::{Router, routing::get};
 
-use crate::{api::health::health_check, state::AppState};
+use crate::{api::health::health_check, core::state::AppState};
 
 pub fn create_router(state: Arc<AppState>) -> Router {
     Router::new()
