@@ -103,6 +103,27 @@ impl SQLiteFileRepository {
         Ok(())
     }
 
+    pub async fn update_position(
+        &self,
+        id: i64,
+        s3_key: &str,
+        parent_id: i64,
+    ) -> Result<(), InfrastructureError> {
+        let result = sqlx::query("UPDATE files SET s3_key = ? AND parent_id = ? WHERE id = ?")
+            .bind(s3_key)
+            .bind(parent_id)
+            .bind(id)
+            .execute(&self.pool)
+            .await
+            .map_err(|e| InfrastructureError::from(e))?;
+
+        if result.rows_affected() == 0 {
+            return Err(InfrastructureError::NotFound(format!("id {}", id)));
+        }
+
+        Ok(())
+    }
+
     pub async fn delete(&self, id: i64) -> Result<(), InfrastructureError> {
         let result = sqlx::query("DELETE FROM files WHERE id = ?")
             .bind(id)

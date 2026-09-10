@@ -18,6 +18,9 @@ pub enum InfrastructureError {
     #[error("Not null constraint violated: {0}")]
     NotNullViolation(String),
 
+    #[error("Foreign key constraint violated: {0}")]
+    ForeignKeyViolation(String),
+
     #[error("IO operation failed: {0}")]
     IoError(String),
 
@@ -43,6 +46,9 @@ impl From<sqlx::Error> for InfrastructureError {
                 }
                 ErrorKind::UniqueViolation => {
                     InfrastructureError::UniqueViolation(db_err.message().to_string())
+                }
+                ErrorKind::ForeignKeyViolation => {
+                    InfrastructureError::ForeignKeyViolation(db_err.message().to_string())
                 }
                 _ => InfrastructureError::DatabaseError(db_err.message().to_string()),
             },
