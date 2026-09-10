@@ -3,10 +3,8 @@
 CREATE TABLE IF NOT EXISTS folders (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT UNIQUE NOT NULL,
-    parent_id INTEGER,
+    parent_id INTEGER REFERENCES folders(id),
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-
-    FOREIGN KEY (parent_id) REFERENCES folders(id) ON DELETE CASCADE
 );
 
-CREATE INDEX idx_name ON folders(name);
+CREATE INDEX idx_folder_name ON folders(name);
