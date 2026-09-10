@@ -1,0 +1,98 @@
+{
+  "db_name": "SQLite",
+  "query": "SELECT * FROM files WHERE name = ?",
+  "describe": {
+    "columns": [
+      {
+        "name": "id",
+        "ordinal": 0,
+        "type_info": "Integer",
+        "origin": {
+          "Table": {
+            "table": "files",
+            "name": "id"
+          }
+        }
+      },
+      {
+        "name": "name",
+        "ordinal": 1,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "files",
+            "name": "name"
+          }
+        }
+      },
+      {
+        "name": "parent_id",
+        "ordinal": 2,
+        "type_info": "Integer",
+        "origin": {
+          "Table": {
+            "table": "files",
+            "name": "parent_id"
+          }
+        }
+      },
+      {
+        "name": "description",
+        "ordinal": 3,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "files",
+            "name": "description"
+          }
+        }
+      },
+      {
+        "name": "s3_key",
+        "ordinal": 4,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "files",
+            "name": "s3_key"
+          }
+        }
+      },
+      {
+        "name": "file_size_bytes",
+        "ordinal": 5,
+        "type_info": "Integer",
+        "origin": {
+          "Table": {
+            "table": "files",
+            "name": "file_size_bytes"
+          }
+        }
+      },
+      {
+        "name": "uploaded_at",
+        "ordinal": 6,
+        "type_info": "Datetime",
+        "origin": {
+          "Table": {
+            "table": "files",
+            "name": "uploaded_at"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Right": 1
+    },
+    "nullable": [
+      false,
+      false,
+      true,
+      true,
+      false,
+      true,
+      true
+    ]
+  },
+  "hash": "c6caee1ec1688bb138a76abecbed4bcdbd34a573ca7779a8f3b1a5a01a416317"
+}

@@ -26,6 +26,9 @@ pub enum InfrastructureError {
 
     #[error("Database error: {0}")]
     DatabaseError(String),
+
+    #[error("Migration error: {0}")]
+    MigrationError(String),
 }
 
 impl From<sqlx::Error> for InfrastructureError {
