@@ -4,11 +4,11 @@ use sqlx::FromRow;
 
 #[derive(Serialize, Deserialize, Clone, FromRow)]
 pub struct File {
-    id: i64,
+    id: i32,
     name: String,
-    parent_id: i64,
+    parent_id: i32,
     description: String,
     s3_key: String,
-    file_size_bytes: i64,
+    file_size_bytes: i32,
     uploaded_at: DateTime<Utc>,
 }
