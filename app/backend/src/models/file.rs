@@ -1,4 +1,4 @@
-use chrono::{DateTime, Utc};
+use chrono::NaiveDateTime;
 use serde::{Deserialize, Serialize};
 use sqlx::FromRow;
 
@@ -10,5 +10,5 @@ pub struct File {
     description: String,
     s3_key: String,
     file_size_bytes: i32,
-    uploaded_at: DateTime<Utc>,
+    uploaded_at: NaiveDateTime,
 }

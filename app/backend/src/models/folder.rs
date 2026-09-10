@@ -1,4 +1,4 @@
-use chrono::{DateTime, Utc};
+use chrono::NaiveDateTime;
 use serde::{Deserialize, Serialize};
 use sqlx::FromRow;
 
@@ -7,5 +7,5 @@ pub struct Folder {
     id: i32,
     name: String,
     parent_id: i32,
-    created_at: DateTime<Utc>,
+    created_at: NaiveDateTime,
 }
