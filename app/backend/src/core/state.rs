@@ -1,7 +1,18 @@
 use std::sync::Arc;
 
-pub struct AppState {}
+use crate::infrastructure::repos::{files::SQLiteFileRepository, folders::SQLiteFolderRepository};
 
-pub fn create_state() -> Arc<AppState> {
-    return Arc::new(AppState {});
+pub struct AppState {
+    file_repo: SQLiteFileRepository,
+    folder_repo: SQLiteFolderRepository,
+}
+
+pub fn create_state(
+    file_repo: SQLiteFileRepository,
+    folder_repo: SQLiteFolderRepository,
+) -> Arc<AppState> {
+    return Arc::new(AppState {
+        file_repo: file_repo,
+        folder_repo: folder_repo,
+    });
 }
