@@ -1,0 +1,3 @@
+app/backend/src/infrastructure/database/local.db
+app/backend/target
+.env
