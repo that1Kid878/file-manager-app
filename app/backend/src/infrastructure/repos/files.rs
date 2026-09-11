@@ -1,6 +1,9 @@
 use sqlx::SqlitePool;
 
-use crate::{infrastructure::errors::InfrastructureError, models::file::File};
+use crate::{
+    infrastructure::{dto::CreateFileDTO, errors::InfrastructureError},
+    models::file::File,
+};
 
 #[derive(Clone)]
 pub struct SQLiteFileRepository {
@@ -12,9 +15,8 @@ impl SQLiteFileRepository {
         return Self { pool };
     }
 
-    pub async fn get_all(&self, name: &str) -> Result<Vec<File>, InfrastructureError> {
+    pub async fn get_all(&self) -> Result<Vec<File>, InfrastructureError> {
         let files = sqlx::query_as::<_, File>("SELECT * FROM files")
-            .bind(name)
             .fetch_all(&self.pool)
             .await
             .map_err(|e| InfrastructureError::from(e))?;
@@ -52,11 +54,10 @@ impl SQLiteFileRepository {
         Ok(file)
     }
 
-    pub async fn create(&self, file: File) -> Result<(), InfrastructureError> {
+    pub async fn create(&self, file: CreateFileDTO) -> Result<(), InfrastructureError> {
         sqlx::query(
-            "INSERT INTO files (id, name, parent_id, description, s3_key, file_size_bytes) VALUES (? ,? ,?, ?, ?, ?)",
+            "INSERT INTO files (name, parent_id, description, s3_key, file_size_bytes) VALUES (? ,?, ?, ?, ?)",
         )
-        .bind(&file.id)
         .bind(&file.name)
         .bind(&file.parent_id)
         .bind(&file.description)

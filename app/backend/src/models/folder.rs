@@ -4,8 +4,8 @@ use sqlx::FromRow;
 
 #[derive(Serialize, Deserialize, Clone, FromRow)]
 pub struct Folder {
-    id: i32,
+    id: i64,
     name: String,
-    parent_id: i32,
+    parent_id: i64,
     created_at: NaiveDateTime,
 }
