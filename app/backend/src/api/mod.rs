@@ -1,4 +1,5 @@
 mod health;
+mod v1;
 use std::sync::Arc;
 
 use axum::{Router, routing::get};
